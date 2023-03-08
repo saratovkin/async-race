@@ -1,0 +1,10 @@
+.cars-counter {
+  width: 200px;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+.cars-counter span {
+  font-size: 30px;
+}

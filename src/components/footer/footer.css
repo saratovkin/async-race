@@ -1,0 +1,27 @@
+.footer {
+  width: 100vw;
+  background-color: #000;
+  color: #fff;
+  height: 110px;
+}
+
+.footer-container {
+  width: calc(100% - 30px);
+  height: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 15px;
+}
+
+.footer-container a {
+  color: #fff;
+  text-decoration: none;
+  transition: transform 0.2s;
+}
+
+.footer-container a:hover {
+  transform: scale(1.05);
+}

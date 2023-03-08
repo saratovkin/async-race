@@ -1,0 +1,10 @@
+.winners-counter {
+  width: 200px;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+.winners-counter span {
+  font-size: 30px;
+}

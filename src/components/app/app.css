@@ -1,0 +1,41 @@
+html {
+  scroll-behavior: smooth;
+}
+#root,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  min-height: 100vh;
+}
+
+.main-container {
+  width: 100vw;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.main-container,
+.main-container input,
+.main-container button {
+  font-family: 'Be Vietnam Pro';
+  font-weight: 200;
+}
+
+.main-container input {
+  outline: none;
+}
+
+.error-message {
+  width: 80%;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.error-message a {
+  color: #000;
+}

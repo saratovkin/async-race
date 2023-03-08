@@ -1,0 +1,93 @@
+.car-item {
+  list-style: none;
+  padding: 10px;
+  border: 1px solid #333;
+  position: relative;
+}
+
+.car-item::after {
+  width: calc(100% - 20px);
+  height: 4px;
+  position: absolute;
+  top: calc(100% - 18px);
+  left: 10px;
+  content: '';
+  background-color: darkgray;
+}
+
+.car-buttons {
+  display: flex;
+  justify-content: flex-start;
+  align-items: baseline;
+  column-gap: 5px;
+  row-gap: 10px;
+}
+
+.car-buttons:first-child {
+  margin-bottom: 15px;
+}
+
+.car-buttons button {
+  padding: 5px;
+  background-color: #fff;
+  border: 2px solid #333;
+  border-radius: 10px;
+  transition: background-color 0.3s;
+  cursor: pointer;
+  user-select: none;
+}
+
+.blocked {
+  border: 2px solid #d3d3d3;
+  color: #d3d3d3;
+  pointer-events: none;
+}
+
+.car-buttons button:hover {
+  background-color: #d3d3d3;
+}
+
+.car-name {
+  font-size: 24px;
+  margin-left: 15px;
+}
+
+.car-icon {
+  width: 100px;
+  height: 50px;
+  margin-left: 0;
+  z-index: 2;
+}
+
+.fire-icon {
+  position: absolute;
+  left: 0;
+  z-index: 0;
+  margin-bottom: 15px;
+}
+
+.fire-icon path {
+  fill: transparent;
+}
+
+.car-icon.broken path {
+  fill: transparent;
+}
+
+.fire-icon.visible path {
+  fill: tomato;
+}
+
+@keyframes rideCar {
+  0% {
+    margin-left: 0;
+  }
+  100% {
+    margin-left: calc(100% - 100px);
+  }
+}
+.car-icon.animated {
+  animation-name: rideCar;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
