@@ -12,10 +12,6 @@ import Footer from '../footer/footer';
 import CarGenerator from '../../misc/carGenerator';
 import Loader from '../../loader/loader';
 
-interface Props {
-
-}
-
 interface State {
   cars: ICar[],
   winners: IWinner[],
@@ -37,9 +33,9 @@ interface State {
 }
 
 
-class App extends React.Component<Props, State>  {
+class App extends React.Component<Record<string, never>, State>  {
   loader: Loader;
-  constructor(props: Props) {
+  constructor(props: Record<string, never>) {
     super(props);
     this.loader = new Loader();
     this.state = {

@@ -2,16 +2,12 @@ import React from 'react';
 
 import NavBtn from './nav-btn';
 
-interface State {
-
-}
-
 interface Props {
   changeView: (view: string) => void,
   view: string,
 }
 
-class Navigation extends React.Component<Props, State> {
+class Navigation extends React.Component<Props, Record<string, never>> {
   views = ['garage', 'winners'];
 
   render() {

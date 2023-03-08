@@ -10,10 +10,8 @@ interface Props {
   isWinnerSaved: boolean,
 }
 
-interface State {
-}
 
-class GarageControls extends React.Component<Props, State> {
+class GarageControls extends React.Component<Props, Record<string, never>> {
   render() {
     const { onRaceStart, onRaceReset, onCarsGenerated, isRaceStarted, isStartPossible } = this.props;
     return (

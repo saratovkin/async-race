@@ -6,18 +6,14 @@ interface Props {
   pageNum: number,
   isRaceStarted?: boolean,
   isWinnerSaved?: boolean,
-  onRaceReset: () => void,
   onPageChanged: (index: number) => void,
+  onRaceReset?: () => void,
 }
 
-interface State {
-
-}
-
-class Pagination extends React.Component<Props, State> {
+class Pagination extends React.Component<Props, never> {
   render() {
     const {
-      pagesAmount, onRaceReset, onPageChanged, pageNum, isRaceStarted, isWinnerSaved,
+      pagesAmount, onPageChanged, pageNum, isRaceStarted, isWinnerSaved,
     } = this.props;
     let blockedClass = '';
     if (isRaceStarted) {
@@ -31,8 +27,8 @@ class Pagination extends React.Component<Props, State> {
         tabIndex={0}
         className={(pageNum === index ? 'pag-btn active' : 'pag-btn') + blockedClass}
         key={index}
-        onClick={() => { onPageChanged(index); onRaceReset(); window.scrollTo(0, 0); }}
-        onKeyDown={() => { onPageChanged(index); onRaceReset(); window.scrollTo(0, 0); }}
+        onClick={() => { onPageChanged(index); window.scrollTo(0, 0); }}
+        onKeyDown={() => { onPageChanged(index); window.scrollTo(0, 0); }}
       >
         {index + 1}
       </span>

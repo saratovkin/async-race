@@ -5,10 +5,8 @@ interface Props {
   onCountUpdated: () => number,
 }
 
-interface State {
-}
 
-class CarsCounter extends React.Component<Props, State> {
+class CarsCounter extends React.Component<Props, Record<string, never>> {
   render() {
     return (
       <div className="cars-counter">

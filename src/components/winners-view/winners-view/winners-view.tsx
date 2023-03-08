@@ -17,12 +17,9 @@ interface Props {
   sortDirection: string,
 }
 
-interface State {
-}
-
 const elementsPerPage = 10;
 
-class WinnersView extends React.Component<Props, State> {
+class WinnersView extends React.Component<Props, Record<string, never>> {
 
   getDisplayedWinners() {
     const idx = this.props.page * elementsPerPage;
@@ -75,7 +72,6 @@ class WinnersView extends React.Component<Props, State> {
         <Pagination
           pagesAmount={this.getAmountOfPages()}
           pageNum={page}
-          onRaceReset={() => { }}
           onPageChanged={this.setPage}
         />
       </div>

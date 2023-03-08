@@ -9,10 +9,7 @@ interface Props {
   time: number,
 }
 
-interface State {
-}
-
-class WinnersItem extends React.Component<Props, State> {
+class WinnersItem extends React.Component<Props, Record<string, never>> {
   render() {
     const {
       index, color, name, wins, time,

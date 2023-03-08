@@ -110,7 +110,7 @@ class GarageView extends React.Component<Props, State>{
       isWinnerSaved, raceId
     } = this.props;
 
-    const alert = winner ? <WinnerAlert winner={winner} /> : null;
+    const alert = winner ? <WinnerAlert winner={winner} onRaceReset={onRaceReset}/> : null;
 
     return (
       <div className="garage-view">

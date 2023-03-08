@@ -19,3 +19,10 @@
   border-radius: 5px;
   font-size: 22px;
 }
+
+.close-modal {
+  position: absolute;
+  top: 0;
+  right: 5px;
+  cursor: pointer;
+}

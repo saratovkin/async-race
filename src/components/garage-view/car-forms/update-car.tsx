@@ -8,10 +8,7 @@ interface Props {
   onSpecsInput: (type: string, key: string, value: string) => void,
 }
 
-interface State {
-}
-
-class UpdateCar extends React.Component<Props, State> {
+class UpdateCar extends React.Component<Props, Record<string, never>> {
 
   onSubmit = (e: FormEvent) => {
     e.preventDefault();

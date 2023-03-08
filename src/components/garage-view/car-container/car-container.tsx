@@ -17,10 +17,7 @@ interface Props {
   raceId: number,
 }
 
-interface State {
-}
-
-class CarContainer extends React.Component<Props, State> {
+class CarContainer extends React.Component<Props, Record<string, never>> {
   render() {
     const {
       cars, onCarDeleted, onCarSelected, onCarFinished, onCarReset, isRaceStarted, isRaceReset, isWinnerSaved, raceId

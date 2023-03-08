@@ -12,10 +12,7 @@ interface Props {
   sortDirection: string,
 }
 
-interface State {
-}
-
-class WinnersTable extends React.Component<Props, State> {
+class WinnersTable extends React.Component<Props, Record<string, never>> {
 
   render() {
     const { winners, pageNum, onSortTypeSelected, sortType, sortDirection } = this.props;
@@ -34,14 +31,12 @@ class WinnersTable extends React.Component<Props, State> {
             role='button'
             tabIndex={0}
             onClick={() => onSortTypeSelected('wins')}
-            onKeyDown={() => { }}
           >{winsTitle}</span>
           <span
             className="sort-select"
             role='button'
             tabIndex={0}
             onClick={() => onSortTypeSelected('time')}
-            onKeyDown={() => { }}
           >{timeTitle}</span>
         </div>
         <WinnersContainer

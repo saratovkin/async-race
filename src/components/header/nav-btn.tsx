@@ -1,16 +1,12 @@
 import React from 'react';
 
-interface State {
-
-}
-
 interface Props {
   changeView: (view: string) => void,
   view: string,
   className: string,
 }
 
-class NavBtn extends React.Component<Props, State> {
+class NavBtn extends React.Component<Props, Record<string, never>> {
   render() {
     return (
       <span

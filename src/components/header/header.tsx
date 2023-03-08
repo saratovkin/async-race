@@ -4,17 +4,12 @@ import './header.css';
 
 import Navigation from './navigation';
 
-
-interface State {
-
-}
-
 interface Props {
   changeView: (view: string) => void,
   view: string,
 }
 
-class Header extends React.Component<Props, State> {
+class Header extends React.Component<Props, Record<string, never>> {
   render() {
     return (
       <header className="header">

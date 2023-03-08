@@ -5,11 +5,7 @@ interface Props {
   count: number,
 }
 
-interface State {
-
-}
-
-class WinnersCounter extends React.Component<Props, State> {
+class WinnersCounter extends React.Component<Props, Record<string, never>> {
   render() {
     return (
       <div className="winners-counter">

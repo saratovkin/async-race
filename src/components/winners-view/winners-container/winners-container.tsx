@@ -9,12 +9,9 @@ interface Props {
   pageNum: number,
 }
 
-interface State {
-}
-
 const elementsPerPage = 10;
 
-class WinnersContainer extends React.Component<Props, State> {
+class WinnersContainer extends React.Component<Props, Record<string, never>> {
   render() {
     const { winners, pageNum } = this.props;
     const winnersElements = winners.map((item, index) => {

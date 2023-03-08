@@ -1,15 +1,11 @@
 import React from 'react';
 import './page-number.css';
 
-interface State {
-
-}
-
 interface Props {
   pageNum: number,
 }
 
-class PageNumber extends React.Component<Props,State> {
+class PageNumber extends React.Component<Props,Record<string, never>> {
   render() {
     return (
       <div className="page-number">
