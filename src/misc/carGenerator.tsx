@@ -1,6 +1,6 @@
 interface ISpecs {
-  name: string,
-  color: string,
+  name: string;
+  color: string;
 }
 
 class CarGenerator {

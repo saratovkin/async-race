@@ -15,7 +15,9 @@ class WinnerAlert extends React.Component<Props, Record<string, never>> {
       <div className="winner-alert">
         <span>{`Winner is ${(winner as IWinner).name}!`}</span>
         <span>{`Time is ${(winner as IWinner).time}s`}</span>
-        <span className="close-modal" onClick={onRaceReset}>x</span>
+        <span className="close-modal" onClick={onRaceReset}>
+          x
+        </span>
       </div>
     );
   }

@@ -19,7 +19,7 @@
 .footer-container a {
   color: #fff;
   text-decoration: none;
-  transition: transform .2s;
+  transition: transform 0.2s;
 }
 
 .footer-container a:hover {

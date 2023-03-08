@@ -13,27 +13,26 @@ import CarGenerator from '../../misc/carGenerator';
 import Loader from '../../loader/loader';
 
 interface State {
-  cars: ICar[],
-  winners: IWinner[],
-  winner: IWinner | undefined,
-  view: string,
-  currentCar: number | undefined,
-  newCarName: string,
-  newCarColor: string,
-  currentCarName: string,
-  currentCarColor: string,
-  sortType: string,
-  sortDirection: string,
-  garagePage: number,
-  winnersPage: number,
-  raceId: number,
-  isRaceStarted: boolean,
-  isRaceReset: boolean,
-  isWinnerSaved: boolean,
+  cars: ICar[];
+  winners: IWinner[];
+  winner: IWinner | undefined;
+  view: string;
+  currentCar: number | undefined;
+  newCarName: string;
+  newCarColor: string;
+  currentCarName: string;
+  currentCarColor: string;
+  sortType: string;
+  sortDirection: string;
+  garagePage: number;
+  winnersPage: number;
+  raceId: number;
+  isRaceStarted: boolean;
+  isRaceReset: boolean;
+  isWinnerSaved: boolean;
 }
 
-
-class App extends React.Component<Record<string, never>, State>  {
+class App extends React.Component<Record<string, never>, State> {
   loader: Loader;
   constructor(props: Record<string, never>) {
     super(props);
@@ -136,12 +135,12 @@ class App extends React.Component<Record<string, never>, State>  {
     if (this.state.cars.length !== 0) {
       this.setState(({ raceId }) => {
         const newRaceId = raceId + 1;
-        return ({
+        return {
           raceId: newRaceId,
           isRaceStarted: true,
           isRaceReset: false,
           isWinnerSaved: false,
-        });
+        };
       });
     }
   };
@@ -150,12 +149,12 @@ class App extends React.Component<Record<string, never>, State>  {
     if (!this.state.isRaceReset && this.state.cars.length !== 0) {
       this.setState(({ raceId }) => {
         const newRaceId = raceId + 1;
-        return ({
+        return {
           raceId: newRaceId,
           isRaceStarted: false,
           isRaceReset: true,
           winner: undefined,
-        });
+        };
       });
     }
   };
@@ -166,7 +165,7 @@ class App extends React.Component<Record<string, never>, State>  {
         return {
           isWinnerSaved: true,
           winner: { name: winner.name, time: winner.time },
-        }
+        };
       });
       this.loader.getWinnerById(winner.id as number).then((res) => {
         const newWinner = winner;
@@ -174,21 +173,21 @@ class App extends React.Component<Record<string, never>, State>  {
           this.loader.updateWinner(
             winner.id as number,
             res.wins + 1,
-            (+res.time > +winner.time) ? winner.time : res.time,
+            +res.time > +winner.time ? winner.time : res.time
           );
           newWinner.wins = res.wins + 1;
-          newWinner.time = (+res.time > +winner.time) ? winner.time : res.time;
+          newWinner.time = +res.time > +winner.time ? winner.time : res.time;
           this.setState(({ winners }) => {
             const idx = winners.findIndex((el) => el.id === newWinner.id);
-            return ({
-              winners: [...winners.slice(0, idx), newWinner, ...winners.slice(idx + 1)]
-            })
+            return {
+              winners: [...winners.slice(0, idx), newWinner, ...winners.slice(idx + 1)],
+            };
           });
         } else {
           this.loader.createWinner(winner.id as number, 1, winner.time);
           newWinner.wins = 1;
           this.setState(({ winners }) => ({
-            winners: [...winners, newWinner]
+            winners: [...winners, newWinner],
           }));
         }
       });
@@ -276,10 +275,7 @@ class App extends React.Component<Record<string, never>, State>  {
 
     return (
       <div className="main-container">
-        <Header
-          view={this.state.view}
-          changeView={this.changeView}
-        />
+        <Header view={this.state.view} changeView={this.changeView} />
         {view}
         <Footer />
       </div>

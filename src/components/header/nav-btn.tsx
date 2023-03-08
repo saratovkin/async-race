@@ -1,9 +1,9 @@
 import React from 'react';
 
 interface Props {
-  changeView: (view: string) => void,
-  view: string,
-  className: string,
+  changeView: (view: string) => void;
+  view: string;
+  className: string;
 }
 
 class NavBtn extends React.Component<Props, Record<string, never>> {

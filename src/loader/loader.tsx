@@ -70,8 +70,7 @@ class Loader {
         return res;
       }
       return { status: response.status, raceId: raceId };
-    }
-    catch (e) {
+    } catch (e) {
       return null;
     }
   }

@@ -1,14 +1,13 @@
 import React, { FormEvent } from 'react';
 
 interface Props {
-  newName: string,
-  newColor: string,
-  onCarAdded: (name: string, color: string) => void,
-  onSpecsInput: (type: string, key: string, value: string) => void,
+  newName: string;
+  newColor: string;
+  onCarAdded: (name: string, color: string) => void;
+  onSpecsInput: (type: string, key: string, value: string) => void;
 }
 
 class CreateCar extends React.Component<Props, Record<string, never>> {
-
   onSubmit = (e: FormEvent) => {
     e.preventDefault();
     const name = this.props.newName;
@@ -20,10 +19,7 @@ class CreateCar extends React.Component<Props, Record<string, never>> {
 
   render() {
     return (
-      <form
-        className="car-form"
-        onSubmit={(e) => this.onSubmit(e)}
-      >
+      <form className="car-form" onSubmit={(e) => this.onSubmit(e)}>
         <input
           type="text"
           placeholder="Car Model"

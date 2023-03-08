@@ -2,25 +2,33 @@ import React from 'react';
 import './cars-table.css';
 
 import CarContainer from '../car-container/car-container';
-import ICar from '../../../interfaces/ICar'
-import IWinner from '../../../interfaces/IWinner'
+import ICar from '../../../interfaces/ICar';
+import IWinner from '../../../interfaces/IWinner';
 
 interface Props {
-  cars: ICar[],
-  onCarDeleted: (id: number) => void,
-  onCarSelected: (id: number) => void,
-  onCarFinished: (winner: IWinner) => void,
-  onCarReset: () => void,
-  isRaceStarted: boolean,
-  isRaceReset: boolean,
-  isWinnerSaved: boolean,
-  raceId: number,
+  cars: ICar[];
+  onCarDeleted: (id: number) => void;
+  onCarSelected: (id: number) => void;
+  onCarFinished: (winner: IWinner) => void;
+  onCarReset: () => void;
+  isRaceStarted: boolean;
+  isRaceReset: boolean;
+  isWinnerSaved: boolean;
+  raceId: number;
 }
 
 class CarsTable extends React.Component<Props, Record<string, never>> {
   render() {
     const {
-      cars, onCarDeleted, onCarSelected, onCarFinished, onCarReset, isRaceStarted, isRaceReset, isWinnerSaved, raceId
+      cars,
+      onCarDeleted,
+      onCarSelected,
+      onCarFinished,
+      onCarReset,
+      isRaceStarted,
+      isRaceReset,
+      isWinnerSaved,
+      raceId,
     } = this.props;
     return (
       <div className="cars-table">

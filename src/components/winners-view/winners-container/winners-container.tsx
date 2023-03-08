@@ -5,8 +5,8 @@ import WinnersItem from '../winners-item/winners-item';
 import IWinner from '../../../interfaces/IWinner';
 
 interface Props {
-  winners: IWinner[],
-  pageNum: number,
+  winners: IWinner[];
+  pageNum: number;
 }
 
 const elementsPerPage = 10;

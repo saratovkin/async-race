@@ -2,7 +2,7 @@ import React from 'react';
 import './winners-counter.css';
 
 interface Props {
-  count: number,
+  count: number;
 }
 
 class WinnersCounter extends React.Component<Props, Record<string, never>> {
@@ -10,11 +10,7 @@ class WinnersCounter extends React.Component<Props, Record<string, never>> {
     return (
       <div className="winners-counter">
         <span>Winners</span>
-        <span>
-          (
-          {this.props.count}
-          )
-        </span>
+        <span>({this.props.count})</span>
       </div>
     );
   }
