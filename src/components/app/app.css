@@ -6,6 +6,7 @@ body {
   margin: 0;
   padding: 0;
   width: 100vw;
+  min-height: 100vh;
 }
 
 .main-container {
@@ -13,6 +14,9 @@ body {
   height: 100vh;
   margin: 0;
   padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .main-container,
@@ -24,4 +28,14 @@ body {
 
 .main-container input {
   outline: none;
+}
+
+.error-message {
+  width: 80%;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.error-message a {
+  color: #000;
 }

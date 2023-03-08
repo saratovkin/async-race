@@ -69,7 +69,7 @@ class GarageView extends React.Component<Props, State> {
   };
 
   isStartPossible = () => {
-    if (this.props.cars.length === 0) {
+    if (this.props.cars && this.props.cars.length === 0) {
       return false;
     }
     if (!this.props.isRaceStarted && !this.props.isRaceReset) {

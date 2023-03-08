@@ -30,6 +30,7 @@ interface State {
   isRaceStarted: boolean;
   isRaceReset: boolean;
   isWinnerSaved: boolean;
+  isError: boolean;
 }
 
 class App extends React.Component<Record<string, never>, State> {
@@ -55,24 +56,31 @@ class App extends React.Component<Record<string, never>, State> {
       isRaceStarted: false,
       isRaceReset: false,
       isWinnerSaved: false,
+      isError: false,
     };
     this.getCars();
     this.getWinners();
   }
 
   getCars = (): void => {
-    this.loader.getAllCars().then((data: ICar[]) => {
-      this.setState(() => ({ cars: data }));
-    });
+    this.loader
+      .getAllCars()
+      .then((data: ICar[] | null) => {
+        this.setState(() => ({ cars: data ? data : [] }));
+      })
+      .catch(() => this.setisError());
   };
 
   addCar = (name: string, color: string) => {
-    this.loader.createCar(name, color).then((res: ICar) => {
-      this.setState(({ cars }) => {
-        const newArr = [...cars, res];
-        return { cars: newArr };
-      });
-    });
+    this.loader
+      .createCar(name, color)
+      .then((res: ICar) => {
+        this.setState(({ cars }) => {
+          const newArr = [...cars, res];
+          return { cars: newArr };
+        });
+      })
+      .catch(() => this.setisError());
   };
 
   selectCar = (id: number) => {
@@ -81,25 +89,34 @@ class App extends React.Component<Record<string, never>, State> {
 
   updateCar = (name: string, color: string) => {
     if (this.state.currentCar !== undefined) {
-      this.loader.updateCar(this.state.currentCar, name, color).then((res: ICar) => {
-        if (res) {
-          this.setState(({ cars }) => {
-            const idx = cars.findIndex((el) => el.id === res.id);
-            return { cars: [...cars.slice(0, idx), res, ...cars.slice(idx + 1)], currentCar: undefined };
-          });
-        }
-      });
+      this.loader
+        .updateCar(this.state.currentCar, name, color)
+        .then((res: ICar) => {
+          if (res) {
+            this.setState(({ cars }) => {
+              const idx = cars.findIndex((el) => el.id === res.id);
+              return { cars: [...cars.slice(0, idx), res, ...cars.slice(idx + 1)], currentCar: undefined };
+            });
+          }
+        })
+        .catch(() => this.setisError());
       this.getWinners();
     }
   };
 
   deleteCar = (id: number) => {
-    this.loader.deleteCar(id).then(() => {
-      this.loader.deleteWinner(id).then(() => {
-        this.getCars();
-        this.getWinners();
-      });
-    });
+    this.loader
+      .deleteCar(id)
+      .then(() => {
+        this.loader
+          .deleteWinner(id)
+          .then(() => {
+            this.getCars();
+            this.getWinners();
+          })
+          .catch(() => this.setisError());
+      })
+      .catch(() => this.setisError());
   };
 
   generateCars = () => {
@@ -111,22 +128,25 @@ class App extends React.Component<Record<string, never>, State> {
 
   getWinners = () => {
     const winners = [] as IWinner[];
-    this.loader.getAllWinners().then((data: IWinner[]) => {
-      data.forEach((winner) => {
-        this.loader.getCarById(winner.id as number).then((res: ICar) => {
-          winners.push({
-            id: res.id,
-            name: res.name,
-            color: res.color,
-            wins: winner.wins,
-            time: winner.time,
+    this.loader
+      .getAllWinners()
+      .then((data: IWinner[]) => {
+        data.forEach((winner) => {
+          this.loader.getCarById(winner.id as number).then((res: ICar) => {
+            winners.push({
+              id: res.id,
+              name: res.name,
+              color: res.color,
+              wins: winner.wins,
+              time: winner.time,
+            });
           });
         });
-      });
-      this.setState(() => ({
-        winners: winners,
-      }));
-    });
+        this.setState(() => ({
+          winners: winners,
+        }));
+      })
+      .catch(() => this.setisError());
   };
 
   updateCount = (): number => this.state.cars.length;
@@ -167,30 +187,33 @@ class App extends React.Component<Record<string, never>, State> {
           winner: { name: winner.name, time: winner.time },
         };
       });
-      this.loader.getWinnerById(winner.id as number).then((res) => {
-        const newWinner = winner;
-        if (res) {
-          this.loader.updateWinner(
-            winner.id as number,
-            res.wins + 1,
-            +res.time > +winner.time ? winner.time : res.time
-          );
-          newWinner.wins = res.wins + 1;
-          newWinner.time = +res.time > +winner.time ? winner.time : res.time;
-          this.setState(({ winners }) => {
-            const idx = winners.findIndex((el) => el.id === newWinner.id);
-            return {
-              winners: [...winners.slice(0, idx), newWinner, ...winners.slice(idx + 1)],
-            };
-          });
-        } else {
-          this.loader.createWinner(winner.id as number, 1, winner.time);
-          newWinner.wins = 1;
-          this.setState(({ winners }) => ({
-            winners: [...winners, newWinner],
-          }));
-        }
-      });
+      this.loader
+        .getWinnerById(winner.id as number)
+        .then((res) => {
+          const newWinner = winner;
+          if (res) {
+            this.loader.updateWinner(
+              winner.id as number,
+              res.wins + 1,
+              +res.time > +winner.time ? winner.time : res.time
+            );
+            newWinner.wins = res.wins + 1;
+            newWinner.time = +res.time > +winner.time ? winner.time : res.time;
+            this.setState(({ winners }) => {
+              const idx = winners.findIndex((el) => el.id === newWinner.id);
+              return {
+                winners: [...winners.slice(0, idx), newWinner, ...winners.slice(idx + 1)],
+              };
+            });
+          } else {
+            this.loader.createWinner(winner.id as number, 1, winner.time);
+            newWinner.wins = 1;
+            this.setState(({ winners }) => ({
+              winners: [...winners, newWinner],
+            }));
+          }
+        })
+        .catch(() => this.setisError());
     }
   };
 
@@ -232,7 +255,33 @@ class App extends React.Component<Record<string, never>, State> {
     });
   };
 
+  setisError = () => {
+    this.setState(() => ({
+      isError: true,
+    }));
+  };
+
   render() {
+    if (this.state.isError) {
+      return (
+        <div className="main-container">
+          <Header view={this.state.view} changeView={this.changeView} />
+          <div className="error-message">
+            <p>Unfortunately, an error has occurred. </p>
+            <p>
+              This is most likely due to the fact that the application could not find the server and you need to start
+              it on your device.
+            </p>
+            <a href="https://github.com/saratovkin/async-race/blob/main/README.md">See more about server side</a>
+            <p>
+              If you sure that server is working correctly and still recieve this message, please contact{' '}
+              <a href="https://github.com/saratovkin">me</a>.
+            </p>
+          </div>
+          <Footer />
+        </div>
+      );
+    }
     const garageView = (
       <GarageView
         cars={this.state.cars}
