@@ -1,0 +1,20 @@
+.table-row {
+  text-align: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  height: 50px;
+}
+
+.table-row span {
+  border: 1px solid #333;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.table-car-icon {
+  transform: scale(1.8);
+}

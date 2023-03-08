@@ -1,0 +1,42 @@
+.pagination {
+  max-width: 600px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 0 auto;
+  margin-top: 20px;
+  gap: 12px;
+}
+
+.pag-btn {
+  width: 15px;
+  height: 15px;
+  cursor: pointer;
+  transition: transform .3s;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+  border-radius: 15px;
+  border: 1px solid transparent;
+  transition: border .3s;
+  user-select: none;
+}
+
+.pag-btn:hover {
+  border: 1px solid #dfdfdf;
+}
+
+.pag-btn.active {
+  border: 1px solid #bd162c;
+}
+
+.pag-btn.blocked {
+  color: #d3d3d3;
+  pointer-events: none;
+}
+
+.pag-btn.active.blocked {
+  border: 1px solid #d3d3d3;
+}

@@ -1,0 +1,6 @@
+.winners-view {
+  width: calc(100% - 15px);
+  max-width: 1280px;
+  margin: 30px auto;
+  min-height: calc(100vh - 240px);
+}

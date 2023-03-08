@@ -1,0 +1,21 @@
+.winner-alert {
+  width: 40%;
+  min-width: 450px;
+  height: 80px;
+  padding: 5px;
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  left: 50%;
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+  transform: translate(-50%, -50%);
+  background-color: #bd162c;
+  border: 2px solid #333;
+  color: #fff;
+  box-sizing: border-box;
+  border-radius: 5px;
+  font-size: 22px;
+}

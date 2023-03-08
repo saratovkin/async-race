@@ -1,0 +1,32 @@
+.garage-controls {
+  display: flex;
+  flex-wrap: nowrap;
+  width: 300px;
+  justify-content: space-between;
+}
+
+.race-btn,
+.generate-btn {
+  padding: 5px;
+  background-color: #fff;
+  box-sizing: border-box;
+  border: 2px solid #333;
+  border-radius: 5px;
+  transition: background-color .3s;
+  cursor: pointer;
+}
+
+.race-btn {
+  width: 80px;
+  background-color: #bd162c;
+  color: #fff;
+  transition: background-color .3s;
+}
+
+.race-btn:hover {
+  background-color: #333;
+}
+
+.generate-btn:hover {
+  background-color: #d3d3d3;
+}
